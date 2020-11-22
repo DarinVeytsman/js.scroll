@@ -43,7 +43,47 @@ class SCROLL{
 
         return height / 100 * top;
     }
+
+  
 }
+
+function getRandom(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var fixEl = document.querySelector('.header__content');
+class CHILD {
+    constructor(obj) {
+        this.el = obj.el;
+        if (typeof obj.el == 'string') {
+            this.el = document.querySelector(obj.el);
+        }
+        else if (obj.el instanceof HTMLElement) {
+            this.el = obj.el;
+        }
+        this.el.addEventListener('mouseover', () => this.move())
+    }
+
+
+
+    move() {
+        this.el.style.position = 'absolute';
+        this.el.style.top = getRandom(100, 600) + 'px';
+        this.el.style.left = getRandom(100, 1000) + 'px';
+
+    }
+}
+
+const example = new CHILD({
+    el: fixEl,
+
+});
+
+
+
+
 
 
 
